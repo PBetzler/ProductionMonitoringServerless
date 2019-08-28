@@ -1,0 +1,44 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: >
+  ProductionMonitoringServerless
+
+  Sample SAM Template for ProductionMonitoringServerless
+
+# More info about Globals: https://github.com/awslabs/serverless-application-model/blob/master/docs/globals.rst
+Globals:
+  Function:
+    Timeout: 20
+
+Resources:
+  ProductionMonitoringFunction:
+    Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
+    Properties:
+      FunctionName: ProductionMonitoring
+      Role: arn:aws:sts::631016394235:assumed-role/vocstartsoft/user353999=pb060@hdm-stuttgart.de
+      CodeUri: target\ProductionMonitoring-1.0-SNAPSHOT.jar
+      Handler: de.hdm.mi.MainClass::handleRequest
+      #Handler: de\hdm\mi\MainClass::handleRequest
+      #CodeUri: HelloWorldFunction
+      #Handler: helloworld.App::handleRequest
+      Runtime: java8
+      Environment: # More info about Env Vars: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#environment-object
+        Variables:
+          PARAM1: VALUE
+      Events:
+        ProductionMonitoringAPI:
+          Type: Api # More info about API Event Source: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#api
+          Properties:
+            Path: /productionmonitoring
+            Method: get
+
+Outputs:
+  # ServerlessRestApi is an implicit API created out of Events key under Serverless::Function
+  # Find out more about other implicit resources you can reference within SAM
+  # https://github.com/awslabs/serverless-application-model/blob/master/docs/internals/generated_resources.rst#api
+  ProductionMonitoringAPI:
+    Description: "API Gateway endpoint URL for Prod stage for Hello World function"
+    Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/productionmonitoring/"
+  ProductionMonitoringFunction:
+    Description: "Hello World Lambda Function ARN"
+    Value: !GetAtt ProductionMonitoringFunction.Arn
