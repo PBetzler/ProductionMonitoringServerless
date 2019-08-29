@@ -15,8 +15,8 @@ Resources:
     Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
     Properties:
       FunctionName: ProductionMonitoring
-      Role: arn:aws:sts::631016394235:assumed-role/vocstartsoft/user353999=pb060@hdm-stuttgart.de
-      CodeUri: ProductionMonitoring/target/ProductionMonitoring-1.0-SNAPSHOT.jar
+      Role: arn:aws:iam::631016394235:role/industrie40serverlessbacken-HelloWorldFunctionRole-1WB72ST9ENO4A
+      CodeUri: ProductionMonitoring/ #target/ProductionMonitoring-1.0-SNAPSHOT.jar
       Handler: de.hdm.mi.MainClass::handleRequest
       #CodeUri: HelloWorldFunction
       #Handler: helloworld.App::handleRequest

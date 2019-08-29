@@ -51,7 +51,7 @@ public class JSON_Handler_Class extends JSON_Handler_Abstract {
             }
 
         } else {
-            logger.warn("Wrong syntax received!");
+            logger.warn("Wrong syntax received! Received: " +request.toString());
             return JSON_Helper.createNegativeResponse(requestNumber, Product_Monitoring_ErrorCode.WRONG_SYNTAX.getValue());
         }
 

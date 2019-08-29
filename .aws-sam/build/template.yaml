@@ -1,0 +1,39 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: 'ProductionMonitoringServerless
+
+  Sample SAM Template for ProductionMonitoringServerless
+
+  '
+Globals:
+  Function:
+    Timeout: 20
+Outputs:
+  ProductionMonitoringAPI:
+    Description: API Gateway endpoint URL for Prod stage for Hello World function
+    Value:
+      Fn::Sub: https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/productionmonitoring/
+  ProductionMonitoringFunction:
+    Description: Hello World Lambda Function ARN
+    Value:
+      Fn::GetAtt:
+      - ProductionMonitoringFunction
+      - Arn
+Resources:
+  ProductionMonitoringFunction:
+    Properties:
+      CodeUri: ProductionMonitoringFunction
+      Environment:
+        Variables:
+          PARAM1: VALUE
+      Events:
+        ProductionMonitoringAPI:
+          Properties:
+            Method: get
+            Path: /productionmonitoring
+          Type: Api
+      FunctionName: ProductionMonitoring
+      Handler: de.hdm.mi.MainClass::handleRequest
+      Role: arn:aws:iam::631016394235:role/industrie40serverlessbacken-HelloWorldFunctionRole-1WB72ST9ENO4A
+      Runtime: java8
+    Type: AWS::Serverless::Function
+Transform: AWS::Serverless-2016-10-31
