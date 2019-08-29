@@ -1,0 +1,8 @@
+de\hdm\mi\db\DB_Manager_Tester.class
+de\hdm\mi\validator\Product_Validator_Tester.class
+de\hdm\mi\db\DB_Manager_Dummy.class
+de\hdm\mi\handler\JSON_Handler_Tester.class
+de\hdm\mi\helper\SQL_Creator_Helper_Tester.class
+de\hdm\mi\db\DB_Connection_Dummy.class
+de\hdm\mi\helper\JSON_Helper_Tester.class
+de\hdm\mi\MainClass_Tester.class

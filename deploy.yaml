@@ -14,7 +14,7 @@ Resources:
     Properties:
       FunctionName: ProductionMonitoring
       Role: arn:aws:iam::631016394235:role/industrie40serverlessbacken-HelloWorldFunctionRole-1WB72ST9ENO4A
-      CodeUri: s3://productionmonitoringbucket/12cf331a469ebeaf1cd1e6a60c0fdb46
+      CodeUri: s3://productionmonitoringbucket/59bb34558f7ea102f7a510758152663d
       Handler: de.hdm.mi.MainClass::handleRequest
       Runtime: java8
       Environment:

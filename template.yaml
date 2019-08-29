@@ -16,7 +16,7 @@ Resources:
     Properties:
       FunctionName: ProductionMonitoring
       Role: arn:aws:iam::631016394235:role/industrie40serverlessbacken-HelloWorldFunctionRole-1WB72ST9ENO4A
-      CodeUri: ProductionMonitoring/ #target/ProductionMonitoring-1.0-SNAPSHOT.jar
+      CodeUri: ProductionMonitoring/target/ProductionMonitoring-1.0-SNAPSHOT-jar-with-dependencies.jar
       Handler: de.hdm.mi.MainClass::handleRequest
       #CodeUri: HelloWorldFunction
       #Handler: helloworld.App::handleRequest
