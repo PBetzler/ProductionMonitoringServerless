@@ -16,7 +16,7 @@ Resources:
     Properties:
       FunctionName: ProductionMonitoring
       Role: arn:aws:sts::631016394235:assumed-role/vocstartsoft/user353999=pb060@hdm-stuttgart.de
-      CodeUri: target\ProductionMonitoring-1.0-SNAPSHOT.jar
+      CodeUri: ProductionMonitoring/target/ProductionMonitoring-1.0-SNAPSHOT.jar
       Handler: de.hdm.mi.MainClass::handleRequest
       #CodeUri: HelloWorldFunction
       #Handler: helloworld.App::handleRequest
