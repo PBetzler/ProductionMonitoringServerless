@@ -8,13 +8,16 @@ import org.apache.logging.log4j.Logger;
 
 public class DB_Connection_MariaDB extends DB_Standard_Connection_Abstract {
     private static final Logger logger = LogManager.getLogger(DB_Connection_MariaDB.class);
+    private static String placeholderDBUrl = "jdbc:mariadb://141.62.65.117:3306/ProduktionsUeberwachung";
+    private static String placeholderDBUsername = "nutzer";
+    private static String placeholderDBPassword = "passwort";
 
     public DB_Connection_MariaDB() {
-        this("jdbc:mariadb://141.62.65.117:3306/ProduktionsUeberwachung", "nutzer", "passwort");
+        this(placeholderDBUrl, placeholderDBUsername, "passwort");
     }
 
     public DB_Connection_MariaDB(String url, String username, String password){
-        super(url, username, password);
+        super((url!=null) ? url: placeholderDBUrl, (username != null) ? username : placeholderDBUsername, (password != null) ? password: placeholderDBPassword);
     }
 
     public boolean connect() {
