@@ -8,7 +8,7 @@ import org.apache.logging.log4j.Logger;
 
 public class DB_Connection_MariaDB extends DB_Standard_Connection_Abstract {
     private static final Logger logger = LogManager.getLogger(DB_Connection_MariaDB.class);
-    private static String placeholderDBUrl = "jdbc:mariadb://141.62.65.117:3306/ProduktionsUeberwachung";
+    private static String placeholderDBUrl = "url";
     private static String placeholderDBUsername = "nutzer";
     private static String placeholderDBPassword = "passwort";
 
@@ -17,7 +17,7 @@ public class DB_Connection_MariaDB extends DB_Standard_Connection_Abstract {
     }
 
     public DB_Connection_MariaDB(String url, String username, String password){
-        super((url!=null) ? url: placeholderDBUrl, (username != null) ? username : placeholderDBUsername, (password != null) ? password: placeholderDBPassword);
+        super((url!=null && !url.isEmpty()) ? url: placeholderDBUrl, (username != null && !username.isEmpty()) ? username : placeholderDBUsername, (password != null) ? password: placeholderDBPassword);
     }
 
     public boolean connect() {
@@ -36,19 +36,19 @@ public class DB_Connection_MariaDB extends DB_Standard_Connection_Abstract {
 
             if (isConnected()) {
                 if (!disconnect()) {
-                    logger.log(Level.ERROR, "Error, couldnt disconnect from db!");
+                    logger.log(Level.ERROR, "Error, could not disconnect from db!");
                     return false;
                 }
             }
             conn = DriverManager.getConnection(url, username, password);
-            //logger.log(Level.INFO,"Connected to DB!");
+            logger.trace("Connected to DB!");
 
 
             return true;
         } catch (SQLException e) {
             logger.log(Level.ERROR, "Got an SQL exception! " + e.getMessage());
         } catch (ClassNotFoundException e) {
-            logger.log(Level.FATAL, "Fatal Error, couldnt load DB Driver!");
+            logger.log(Level.FATAL, "Fatal Error, could not load DB Driver!");
         }
 
         return false;

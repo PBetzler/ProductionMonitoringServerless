@@ -15,15 +15,18 @@ Resources:
     Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
     Properties:
       FunctionName: ProductionMonitoring
-      Role: arn:aws:iam::631016394235:role/industrie40serverlessbacken-HelloWorldFunctionRole-1WB72ST9ENO4A
+      Role: arn:aws:iam::631016394235:role/ProductionMonitoringIAM
       CodeUri: ProductionMonitoring/target/ProductionMonitoring-1.0-SNAPSHOT-jar-with-dependencies.jar
       Handler: de.hdm.mi.MainClass::handleRequest
-      #CodeUri: HelloWorldFunction
-      #Handler: helloworld.App::handleRequest
       Runtime: java8
       Environment: # More info about Env Vars: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#environment-object
         Variables:
-          PARAM1: VALUE
+          dbUrl:
+            Ref: dbUrl
+          dbUsername:
+            Ref: dbUsername
+          dbPassword:
+            Ref: dbPassword
       Events:
         ProductionMonitoringAPI:
           Type: Api # More info about API Event Source: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#api
@@ -41,3 +44,20 @@ Outputs:
   ProductionMonitoringFunction:
     Description: "Hello World Lambda Function ARN"
     Value: !GetAtt ProductionMonitoringFunction.Arn
+
+
+Parameters:
+  dbUrl:
+    Type: String
+    Description: db url
+    NoEcho: true
+
+  dbUsername:
+    Type: String
+    Description: db username
+    NoEcho: true
+
+  dbPassword:
+    Type: String
+    Description: db username
+    NoEcho: true

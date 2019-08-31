@@ -13,13 +13,18 @@ Resources:
     Type: AWS::Serverless::Function
     Properties:
       FunctionName: ProductionMonitoring
-      Role: arn:aws:iam::631016394235:role/industrie40serverlessbacken-HelloWorldFunctionRole-1WB72ST9ENO4A
-      CodeUri: s3://productionmonitoringbucket/327299bcafcde778fb1c858e2e7e808d
+      Role: arn:aws:iam::631016394235:role/ProductionMonitoringIAM
+      CodeUri: s3://productionmonitoringbucket/94c2743568839341a93489a0b7916731
       Handler: de.hdm.mi.MainClass::handleRequest
       Runtime: java8
       Environment:
         Variables:
-          PARAM1: VALUE
+          dbUrl:
+            Ref: dbUrl
+          dbUsername:
+            Ref: dbUsername
+          dbPassword:
+            Ref: dbPassword
       Events:
         ProductionMonitoringAPI:
           Type: Api
@@ -37,3 +42,16 @@ Outputs:
       Fn::GetAtt:
       - ProductionMonitoringFunction
       - Arn
+Parameters:
+  dbUrl:
+    Type: String
+    Description: db url
+    NoEcho: true
+  dbUsername:
+    Type: String
+    Description: db username
+    NoEcho: true
+  dbPassword:
+    Type: String
+    Description: db username
+    NoEcho: true
