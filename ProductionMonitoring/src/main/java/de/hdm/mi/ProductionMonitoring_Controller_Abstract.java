@@ -35,6 +35,16 @@ public abstract class ProductionMonitoring_Controller_Abstract implements Produc
                 dbUrl = env.get("dbUrl");
                 dbUsername = env.get("dbUsername");
                 dbPassword = env.get("dbPassword");
+
+                if (dbUrl == null || dbUrl.isEmpty()) {
+                    logger.error("Could not receive environment variable dbUrl!");
+                }
+
+                if (dbUsername == null || dbUsername.isEmpty()) {
+                    logger.error("Could not receive environment variable dbUsername!");
+                }
+
+
                 this.dbConnection = new DB_Connection_MariaDB(dbUrl, dbUsername, dbPassword);
             } else {
                 logger.fatal("Fatal error, was not able to receive db access credential from environment variables! Trying to use placeholders....");

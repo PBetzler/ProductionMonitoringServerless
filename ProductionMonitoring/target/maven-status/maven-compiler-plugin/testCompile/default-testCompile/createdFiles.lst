@@ -6,3 +6,4 @@ de\hdm\mi\helper\SQL_Creator_Helper_Tester.class
 de\hdm\mi\db\DB_Connection_Dummy.class
 de\hdm\mi\helper\JSON_Helper_Tester.class
 de\hdm\mi\MainClass_Tester.class
+de\hdm\mi\db\DB_Connection_MariaDB_Tester.class

@@ -17,7 +17,7 @@ public class DB_Connection_MariaDB extends DB_Standard_Connection_Abstract {
     }
 
     public DB_Connection_MariaDB(String url, String username, String password){
-        super((url!=null && !url.isEmpty()) ? url: placeholderDBUrl, (username != null && !username.isEmpty()) ? username : placeholderDBUsername, (password != null) ? password: placeholderDBPassword);
+        super((url!=null && url != "") ? url: placeholderDBUrl, (username != null && !username.isEmpty()) ? username : placeholderDBUsername, (password != null) ? password: placeholderDBPassword);
     }
 
     public boolean connect() {
